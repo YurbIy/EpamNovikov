@@ -1,6 +1,6 @@
-package HW20170624.sign;
+package HW170624.sign;
 
-import HW20170624.SimpleUnit;
+import HW170624.SimpleUnit;
 
 /**
  * Created by Yurbly on 27.06.2017.

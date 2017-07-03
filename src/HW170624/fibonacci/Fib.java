@@ -1,4 +1,4 @@
-package HW20170624.fibonacci;
+package HW170624.fibonacci;
 
 /**
  * Created by Yurbly on 02.07.2017.

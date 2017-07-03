@@ -1,4 +1,4 @@
-package HW20170627;
+package HW170627;
 
 /**
  * Created by Yurbly on 29.06.2017.

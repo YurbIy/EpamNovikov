@@ -1,4 +1,4 @@
-package HW20170624.moduloDivision;
+package HW170624.moduloDivision;
 
 /**
  * Created by Yurbly on 02.07.2017.

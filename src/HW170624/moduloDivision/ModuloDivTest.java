@@ -1,6 +1,6 @@
-package HW20170624.moduloDivision;
+package HW170624.moduloDivision;
 
-import HW20170624.SimpleUnit;
+import HW170624.SimpleUnit;
 
 /**
  * Created by Yurbly on 02.07.2017.

@@ -1,4 +1,4 @@
-package HW20170624;
+package HW170624;
 
 public class SimpleUnit {
 
@@ -43,6 +43,22 @@ public class SimpleUnit {
 	}
 
 	public static boolean assertNotEquals(boolean actual, boolean expected) {
+		boolean notEquals = actual != expected;
+		if (!notEquals) {
+			System.err.println("Test failed: expected NOT " + expected + ", but actual " + actual);
+		}
+		return notEquals;
+	}
+
+	public static boolean assertEquals(long actual, long expected) {
+		boolean equals = actual == expected;
+		if (!equals) {
+			System.err.println("Test failed: expected " + expected + ", but actual " + actual);
+		}
+		return equals;
+	}
+
+	public static boolean assertNotEquals(long actual, long expected) {
 		boolean notEquals = actual != expected;
 		if (!notEquals) {
 			System.err.println("Test failed: expected NOT " + expected + ", but actual " + actual);

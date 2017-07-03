@@ -1,4 +1,4 @@
-package HW20170629;
+package HW170629;
 
 import java.util.Random;
 

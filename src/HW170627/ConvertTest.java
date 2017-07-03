@@ -1,6 +1,4 @@
-package HW20170627;
-
-import HW20170624.SimpleUnit;
+package HW170627;
 
 /**
  * Created by Yurbly on 29.06.2017.

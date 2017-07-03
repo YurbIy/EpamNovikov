@@ -1,6 +1,6 @@
-package HW20170624.isPrime;
+package HW170624.isPrime;
 
-import HW20170624.SimpleUnit;
+import HW170624.SimpleUnit;
 
 import java.util.Date;
 

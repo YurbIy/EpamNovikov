@@ -1,4 +1,4 @@
-package HW20170624.isPrime;
+package HW170624.isPrime;
 
 /**
  * Created by Yurbly on 02.07.2017.
