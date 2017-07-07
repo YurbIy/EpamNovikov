@@ -6,6 +6,7 @@ package HW170627;
 public class ConvertTest {
     public static void main(String[] args) {
         System.out.println(ToAnotherNotation.toOctalString(2147483647));
+        System.out.println(ToAnotherNotation.toAnotherNotation(2147483647, 8));
 //        System.out.println((2147483647 % (int) Math.pow(8, 11)));
 //        System.out.println(Math.abs(-2147483648L));
 //        System.out.println(2147483647 / 1073741824);
