@@ -1,24 +1,58 @@
 package HW170627;
 
+import HW170624.SimpleUnit;
+
 /**
  * Created by Yurbly on 07.07.2017.
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println(ToAnotherNotation.toOctalString2(Integer.MAX_VALUE));
-        System.out.println(Integer.toOctalString(Integer.MAX_VALUE));
-        System.out.println(ToAnotherNotation.toOctalString2(565874));
-        System.out.println(Integer.toOctalString(565874));
-        System.out.println(ToAnotherNotation.toOctalString2(4359834));
-        System.out.println(Integer.toOctalString(4359834));
-//        System.out.println(Math.pow(8, -1));
+
+        octalTest(-10);
+        //        octalTest(10);
+//        octalTest(1244234234);
+//        octalTest(Integer.MAX_VALUE);
+//
+//        binaryTest(10);
+//        binaryTest(23423124);
+//        binaryTest(Integer.MAX_VALUE);
+//
+//        hexTest(10);
+//        hexTest(1223432);
+//        hexTest(Integer.MAX_VALUE);
 
 
 
-//        System.out.println(10%11);
-//        System.out.println(Integer.MAX_VALUE);
-//        System.out.println(Integer.toOctalString(Integer.MIN_VALUE + 1));
-//        System.out.println(Integer.toOctalString(-1));
-//        System.out.println("");
+    }
+    static void test ( int a){
+
+        System.out.println(SimpleUnit.assertEquals(ToAnotherNotation.toOctalString(a), Integer.toOctalString(a)));
+    }
+    static void octalTest(int a){
+
+        Number num = new Number(a, 8);
+        System.out.println(SimpleUnit.assertEquals(num.toString(), Integer.toOctalString(a)));
+
+    }
+    static void hexTest(int a){
+
+        Number num = new Number(a, 16);
+        System.out.println(SimpleUnit.assertEquals(num.toString(), Integer.toHexString(a)));
+
+    }
+    static void binaryTest(int a){
+
+        Number num = new Number(a, 2);
+        System.out.println(SimpleUnit.assertEquals(num.toString(), Integer.toBinaryString(a)));
+
+    }
+
+    static void extendedTest(){
+        for (int i = Integer.MIN_VALUE; i < Integer.MAX_VALUE; i++){
+            if (!SimpleUnit.assertEquals(ToAnotherNotation.toOctalString(i), Integer.toOctalString(i))){
+                System.out.println("Error: " + i);
+                System.exit(0);
+            }
+        }
     }
 }
