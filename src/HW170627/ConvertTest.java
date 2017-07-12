@@ -10,6 +10,6 @@ public class ConvertTest {
 //        System.out.println((2147483647 % (int) Math.pow(8, 11)));
 //        System.out.println(Math.abs(-2147483648L));
 //        System.out.println(2147483647 / 1073741824);
-//        System.out.println(SimpleUnit.assertEquals(ToAnotherNotation.toOctalString(2147483647), Integer.toOctalString(2147483647)));
+//        System.out.println(Asserts.assertEquals(ToAnotherNotation.toOctalString(2147483647), Integer.toOctalString(2147483647)));
     }
 }

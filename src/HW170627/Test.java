@@ -1,6 +1,6 @@
 package HW170627;
 
-import HW170624.SimpleUnit;
+import common.Asserts;
 
 /**
  * Created by Yurbly on 07.07.2017.
@@ -26,30 +26,30 @@ public class Test {
     }
     static void test ( int a){
 
-        System.out.println(SimpleUnit.assertEquals(ToAnotherNotation.toOctalString(a), Integer.toOctalString(a)));
+        System.out.println(Asserts.assertEquals(ToAnotherNotation.toOctalString(a), Integer.toOctalString(a)));
     }
     static void octalTest(int a){
 
         Number num = new Number(a, 8);
-        System.out.println(SimpleUnit.assertEquals(num.toString(), Integer.toOctalString(a)));
+        System.out.println(Asserts.assertEquals(num.toString(), Integer.toOctalString(a)));
 
     }
     static void hexTest(int a){
 
         Number num = new Number(a, 16);
-        System.out.println(SimpleUnit.assertEquals(num.toString(), Integer.toHexString(a)));
+        System.out.println(Asserts.assertEquals(num.toString(), Integer.toHexString(a)));
 
     }
     static void binaryTest(int a){
 
         Number num = new Number(a, 2);
-        System.out.println(SimpleUnit.assertEquals(num.toString(), Integer.toBinaryString(a)));
+        System.out.println(Asserts.assertEquals(num.toString(), Integer.toBinaryString(a)));
 
     }
 
     static void extendedTest(){
         for (int i = Integer.MIN_VALUE; i < Integer.MAX_VALUE; i++){
-            if (!SimpleUnit.assertEquals(ToAnotherNotation.toOctalString(i), Integer.toOctalString(i))){
+            if (!Asserts.assertEquals(ToAnotherNotation.toOctalString(i), Integer.toOctalString(i))){
                 System.out.println("Error: " + i);
                 System.exit(0);
             }

@@ -1,15 +1,15 @@
 package HW170624.moduloDivision;
 
-import HW170624.SimpleUnit;
+import common.Asserts;
 
 /**
  * Created by Yurbly on 02.07.2017.
  */
 public class ModuloDivTest {
     public static void main(String[] args) {
-        System.out.println(SimpleUnit.assertEquals(ModuloDiv.modDiv(5, 2), (5%2)));
-        System.out.println(SimpleUnit.assertEquals(ModuloDiv.modDiv(3, 2), (3%2)));
-        System.out.println(SimpleUnit.assertEquals(ModuloDiv.modDiv(3, 2), (3%2)));
+        System.out.println(Asserts.assertEquals(ModuloDiv.modDiv(5, 2), (5%2)));
+        System.out.println(Asserts.assertEquals(ModuloDiv.modDiv(3, 2), (3%2)));
+        System.out.println(Asserts.assertEquals(ModuloDiv.modDiv(3, 2), (3%2)));
         test(-3, -2);
         test(-3, 2);
         test(3, -2);
@@ -24,6 +24,6 @@ public class ModuloDivTest {
     }
 
     static void test(int a, int b){
-        System.out.println(SimpleUnit.assertEquals(ModuloDiv.modDiv(a, b), (a % b)));
+        System.out.println(Asserts.assertEquals(ModuloDiv.modDiv(a, b), (a % b)));
     }
 }

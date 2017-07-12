@@ -1,6 +1,6 @@
-package HW170624;
+package common;
 
-public class SimpleUnit {
+public class Asserts {
 
 	public static boolean assertEquals(String actual, String expected) {
 		boolean equals = actual.equals(expected);

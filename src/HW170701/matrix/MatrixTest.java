@@ -1,7 +1,5 @@
 package HW170701.matrix;
 
-import HW170624.SimpleUnit;
-
 /**
  * Created by Yurbly on 03.07.2017.
  */

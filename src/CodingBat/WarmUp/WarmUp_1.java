@@ -1,4 +1,4 @@
-package CodingBat.WarmUp_1;
+package CodingBat.WarmUp;
 
 /**
  * Created by Yurbly on 26.06.2017.
