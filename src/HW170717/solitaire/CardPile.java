@@ -65,4 +65,8 @@ class CardPile {
 		return false;
 	}
 
+	public void flipFirst(){
+		firstCard.flip();
+	}
+
 }
