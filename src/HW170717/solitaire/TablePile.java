@@ -4,6 +4,9 @@ import java.awt.Graphics;
 
 class TablePile extends CardPile {
 
+	private int cardNumber;
+	private static final int NEXT_CARD_SHIFT = 35;
+
 	TablePile(int x, int y, int c) {
 		// initialize the parent class
 		super(x, y);
@@ -11,6 +14,7 @@ class TablePile extends CardPile {
 		for (int i = 0; i < c; i++) {
 			push(Solitare.deckPile.pop());
 		}
+
 		// flip topmost card face up
 		top().flip();
 	}
@@ -28,7 +32,7 @@ class TablePile extends CardPile {
 	@Override
 	public boolean includes(int tx, int ty) {
 		// don't test bottom of card
-		return x <= tx && tx <= x + Card.width && y <= ty;
+		return (x <= tx) && (tx <= x + Card.width) && (y + ((cardNumber - 1)* NEXT_CARD_SHIFT) <= ty) && (ty <= y + Card.height + (cardNumber - 1) * NEXT_CARD_SHIFT);
 	}
 
 	@Override
@@ -70,7 +74,7 @@ class TablePile extends CardPile {
 		}
 		localy = stackDisplay(g, aCard.link);
 		aCard.draw(g, x, localy);
-		return localy + 35;
+		return localy + NEXT_CARD_SHIFT;
 	}
 
 	@Override
@@ -78,4 +82,15 @@ class TablePile extends CardPile {
 		stackDisplay(g, top());
 	}
 
+	@Override
+	public Card pop() {
+		cardNumber--;
+		return super.pop();
+	}
+
+	@Override
+	public void push(Card aCard) {
+		cardNumber++;
+		super.push(aCard);
+	}
 }
