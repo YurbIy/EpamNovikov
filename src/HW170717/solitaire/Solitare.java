@@ -2,9 +2,7 @@ package HW170717.solitaire;
 
 import java.applet.Applet;
 import java.awt.*;
-import java.time.Clock;
-import java.time.Instant;
-import java.time.ZoneId;
+
 
 public class Solitare extends Applet {
 	static DeckPile deckPile;
@@ -12,25 +10,11 @@ public class Solitare extends Applet {
 	static TablePile tableau[];
 	static SuitPile suitPile[];
 	private static CardPile allPiles[];
+	public Card selected; //FIXME ??
 
-//	private Clock clock = new Clock() {
-//		@Override
-//		public ZoneId getZone() {
-//			return null;
-//		}
-//
-//		@Override
-//		public Clock withZone(ZoneId zone) {
-//			return null;
-//		}
-//
-//		@Override
-//		public Instant instant() {
-//			return null;
-//		}
-//	};
 
-	private long current = System.currentTimeMillis();
+
+	private long lastTapTime = System.currentTimeMillis();
 
 	@Override
 	public void init() {
@@ -58,23 +42,25 @@ public class Solitare extends Applet {
 
 	@Override
 	public boolean mouseDown(Event evt, int x, int y) {
-		long localCurrent = System.currentTimeMillis();
+		long justTapedTime = System.currentTimeMillis();
 		selection();
-		if(localCurrent - current < 500) {
+		if(justTapedTime - lastTapTime < 500) {
 			for (int i = 0; i < 13; i++) {
 				if (allPiles[i].includes(x, y)) {
-					allPiles[i].select(x, y);
+					allPiles[i].select(x,y);
+					allPiles[i].proceed(x, y);
 					repaint();
 					return true;
 				}
 			}
+
 			return true;
 		}
-		current = System.currentTimeMillis();
+		lastTapTime = System.currentTimeMillis();
 		return false;
 	}
 
 	private void selection() {
-		//TODO select current area
+		//TODO proceed lastTapTime area
 	}
 }
