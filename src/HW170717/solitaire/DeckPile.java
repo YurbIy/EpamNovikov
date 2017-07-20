@@ -35,6 +35,10 @@ class DeckPile extends CardPile {
 	@Override
 	public void select(final int tx, final int ty) {
 		if (empty()) {
+			while(!(Solitare.discardPile.empty())) {
+				push(Solitare.discardPile.pop());			//If deckPile is empty it takes all cards from discardPile
+			}
+			flipFirst();
 			return;
 		}
 		Solitare.discardPile.push(this.pop());
