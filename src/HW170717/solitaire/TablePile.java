@@ -36,7 +36,7 @@ class TablePile extends CardPile {
 	}
 
 	@Override
-	public void select(int tx, int ty) {
+	public void proceed(int tx, int ty) {
 		if (empty()) {
 			return;
 		}
@@ -85,12 +85,28 @@ class TablePile extends CardPile {
 	@Override
 	public Card pop() {
 		cardNumber--;
-		return super.pop();
+		Card poped = super.pop();
+		super.flipFirst();
+		return poped;
 	}
 
 	@Override
 	public void push(Card aCard) {
 		cardNumber++;
 		super.push(aCard);
+	}
+
+	public int getCardNumber(){
+		return cardNumber;
+	}
+
+	@Override
+	public void select(int x, int y) {
+
+
+		//TODO selection
+	}
+	void drawRectangle(Graphics g){
+		g.drawRect(this.x, this.y, 50, 70);
 	}
 }
