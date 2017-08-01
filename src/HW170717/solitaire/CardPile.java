@@ -47,7 +47,7 @@ class CardPile {
 				&& clickY <= y + Card.height;
 	}
 
-	public void select(final int tx, final int ty) {
+	public void proceed(final int tx, final int ty) {
 		// do nothing
 	}
 
@@ -69,4 +69,12 @@ class CardPile {
 		firstCard.flip();
 	}
 
+	public Card tos() {
+
+		return firstCard;
+	}
+
+	public void select(int x, int y) {
+
+	}
 }

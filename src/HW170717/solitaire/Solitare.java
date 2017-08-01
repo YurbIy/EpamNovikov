@@ -43,7 +43,6 @@ public class Solitare extends Applet {
 	@Override
 	public boolean mouseDown(Event evt, int x, int y) {
 		long justTapedTime = System.currentTimeMillis();
-		selection();
 		if(justTapedTime - lastTapTime < 500) {
 			for (int i = 0; i < 13; i++) {
 				if (allPiles[i].includes(x, y)) {
@@ -60,7 +59,5 @@ public class Solitare extends Applet {
 		return false;
 	}
 
-	private void selection() {
-		//TODO proceed lastTapTime area
-	}
+
 }

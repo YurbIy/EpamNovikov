@@ -3,8 +3,16 @@
  */
 public class Test {
     public static void main(String[] args) {
-        String s = "qwerty";
-        s.toCharArray()[0] = 'b';
-        System.out.println(s);
+        System.out.println(12.0 * 2);
+    }
+
+    private static void swap(Integer a, Integer b) {
+
+        Integer tmp = a;
+        int c =  a;
+        int d =  b;
+        a = b;
+        b = tmp;
+
     }
 }
