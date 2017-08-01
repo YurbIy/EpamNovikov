@@ -1,4 +1,4 @@
-package HW170701;
+package CodingBat.Logic;
 
 /**
  * Created by Yurbly on 03.07.2017.
