@@ -1,5 +1,6 @@
 package CodingBat;
 
+import CodingBat.String.String_2;
 import CodingBat.WarmUp.WarmUp_1;
 import CodingBat.WarmUp.WarmUp_2;
 
@@ -12,18 +13,18 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) {
+        System.out.println(2%3);
 
-//        System.out.println("yolka".substring(3,6));
-//        ArrayList<String> list = new ArrayList<>();
-//        List<String> strings = Collections.unmodifiableList(list);
-       char[] value = {'a', 'b', 'c'};
-        StringBuilder stb = new StringBuilder();
-        stb.insert(0, value);
-        System.out.println(stb.toString());
+        A a = new A();
+
     }
 
     static int[] test(int a[]){
         return new int[2];
     }
+
+}
+
+class  A{
 
 }
