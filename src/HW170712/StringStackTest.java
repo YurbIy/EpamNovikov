@@ -13,10 +13,12 @@ public class StringStackTest {
         MyStringStack stack = new MyStringStack(5);
         System.out.println(Asserts.assertEquals(stack.toString(), "[]"));
 
-        stack.add("Eins");
+
+        System.out.println(Asserts.assertEquals(stack.add("Eins"), true));
         stack.add("Zwei");
         stack.add("Drei");
 
         System.out.println(Asserts.assertEquals(stack.toString(), "[Eins, Zwei, Drei]"));
+
     }
 }

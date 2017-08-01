@@ -22,6 +22,8 @@ class Card {
 	private final int rank;
 	private final int suit;
 	private boolean faceup;
+	private int visHeight;
+
 
 	
 	Card link;
@@ -32,7 +34,13 @@ class Card {
 		this.rank = rank;
 		faceup = false;
 		link = null;
+		visHeight = height;
+
 	}
+
+//	void drawBoldFrame(Graphics g){
+//
+//	}
 	
 	public void draw(final Graphics g, final int x, final int y) { 
 		// clear rectangle, draw border
@@ -112,4 +120,13 @@ class Card {
 	public int getSuit() {
 		return suit;
 	}
+
+	public boolean includes(int x, int y) {
+		//TODO include method
+		return false;
+	}
+
+
+
+
 }
