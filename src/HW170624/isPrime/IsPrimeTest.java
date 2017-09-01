@@ -26,6 +26,8 @@ public class IsPrimeTest {
         test(Integer.MAX_VALUE, true);
         test(561, false);
 
+        test(1_000_000_000, false);
+
 //        System.out.println(127%126);
     }
 
