@@ -2,7 +2,7 @@ package HW170707;
 
 import java.util.Arrays;
 
-public class StringArrayList {
+public class StringArrayList<T> {
 	
 	static final int DEFAULT_SIZE = 2;
 	
@@ -42,6 +42,8 @@ public class StringArrayList {
 		elements[size] = null;
 		
 	}
+
+
 	
 	
 
