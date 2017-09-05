@@ -21,14 +21,14 @@ public class SearchAlgsUse {
         System.out.println(keyIndex + " : " + key);
         System.out.println();
 
-        use(new MyLinearSearch(), array, key);
+        useWithTimeMeasure(new MyLinearSearch(), array, key);
         System.out.println();
-        use(new MyBinarySearch(), array, key);
+        useWithTimeMeasure(new MyBinarySearch(), array, key);
 
 
     }
 
-    public static void use(Searcher searcher, int[] array, int key){
+    public static void useWithTimeMeasure(Searcher searcher, int[] array, int key){
         long start = System.currentTimeMillis();
         int index = searcher.search(array, key);
         long end = System.currentTimeMillis();
