@@ -53,7 +53,6 @@ public class StringLinkedList {
 	}
 	
 	public String remove(int index) {
-		// TODO  Home work
 		Node prevDeleting = first;
 		String value;
 

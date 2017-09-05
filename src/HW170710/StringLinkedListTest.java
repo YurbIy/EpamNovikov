@@ -7,7 +7,7 @@ public class StringLinkedListTest {
 
     public static void main(String[] args) {
 //        MyLinkedList list = new MyLinkedList();
-//        list.add("Хмерчь");
+//        list.push("Хмерчь");
         StringLinkedList list = new StringLinkedList();
         list.add("1");
         list.add("2");
