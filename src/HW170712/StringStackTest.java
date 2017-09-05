@@ -1,6 +1,5 @@
 package HW170712;
 
-import HW170706.MyString;
 import common.Asserts;
 
 /**
@@ -10,15 +9,26 @@ public class StringStackTest {
 
     public static void main(String[] args) {
 
-        MyStringStack stack = new MyStringStack(5);
+        MyStringStack<String> stack = new MyStringStack<>(5);
         System.out.println(Asserts.assertEquals(stack.toString(), "[]"));
 
 
-        System.out.println(Asserts.assertEquals(stack.add("Eins"), true));
-        stack.add("Zwei");
-        stack.add("Drei");
+        System.out.println(Asserts.assertEquals(stack.push("Eins"), true));
+        stack.push("Zwei");
+        stack.push("Drei");
 
         System.out.println(Asserts.assertEquals(stack.toString(), "[Eins, Zwei, Drei]"));
+        System.out.println();
+
+        System.out.println(stack.pop());
+        System.out.println(stack);
+        System.out.println(stack.push("Vier"));
+        System.out.println(stack);
+        System.out.println(stack.empty());
+        System.out.println(stack.pop());
+        System.out.println(stack.pop());
+        System.out.println(stack.pop());
+        System.out.println(stack.empty());
 
     }
 }
