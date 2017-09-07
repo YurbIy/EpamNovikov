@@ -15,6 +15,7 @@ class Card {
 	final static int height = 70;
 	final static int width = 50;
 
+	private static String[] suits = {"Heart", "Spade", "Diamond", "Club"};
 	private static final String names[] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10",
 			"J", "Q", "K" };
 
@@ -23,6 +24,7 @@ class Card {
 	private final int suit;
 	private boolean faceup;
 	private int visHeight;
+//	private boolean selected;
 
 
 	
@@ -42,10 +44,15 @@ class Card {
 //
 //	}
 	
-	public void draw(final Graphics g, final int x, final int y) { 
+	public void draw(final Graphics g, final int x, final int y, boolean selected) {
 		// clear rectangle, draw border
 		g.clearRect(x, y, width, height);
-		g.setColor(Color.black);
+		if(selected && isFaceUp()) {
+			g.setColor(Color.red);
+		}
+		else {
+			g.setColor(Color.black);
+		}
 		g.drawRect(x, y, width, height);
 		// draw body of card
 		if (isFaceUp()) {
@@ -126,7 +133,8 @@ class Card {
 		return false;
 	}
 
-
-
-
+	@Override
+	public String toString() {
+		return names[rank] + " " + suits[suit];
+	}
 }

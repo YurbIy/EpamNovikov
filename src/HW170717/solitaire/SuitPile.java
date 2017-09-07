@@ -17,11 +17,18 @@ class SuitPile extends CardPile {
 	}
 
 	@Override
-	public void select(int x, int y) {
-		if(empty()){
-
+	public void tapped(int x, int y) {
+		if(Solitare.selectedCard != null){
+			proceed(x,y);
 		}
-		else{
+	}
+
+	@Override
+	public void proceed(int x, int y) {
+		if(canTake(Solitare.selectedCard) /*&& (Solitare.selectedCard.link == null)*/){
+			this.transfer(Solitare.selectedCard);
+			System.out.println(Solitare.selectedCard); // FIXME technical message
+			Solitare.deselect();
 
 		}
 	}

@@ -2,6 +2,7 @@ package HW170717.solitaire;
 
 import java.applet.Applet;
 import java.awt.*;
+import java.util.Arrays;
 
 
 public class Solitare extends Applet {
@@ -10,11 +11,15 @@ public class Solitare extends Applet {
 	static TablePile tableau[];
 	static SuitPile suitPile[];
 	private static CardPile allPiles[];
-	public Card selected; //FIXME ??
+	static boolean selected;
+	static Card selectedCard;
+	static CardPile selectedPile;
 
 
 
 	private long lastTapTime = System.currentTimeMillis();
+
+
 
 	@Override
 	public void init() {
@@ -42,21 +47,34 @@ public class Solitare extends Applet {
 
 	@Override
 	public boolean mouseDown(Event evt, int x, int y) {
-		long justTapedTime = System.currentTimeMillis();
-		if(justTapedTime - lastTapTime < 500) {
-			for (int i = 0; i < 13; i++) {
-				if (allPiles[i].includes(x, y)) {
-					allPiles[i].select(x,y);
-					allPiles[i].proceed(x, y);
-					repaint();
-					return true;
-				}
-			}
+		System.out.println(x + " " + y);
+//		long justTapedTime = System.currentTimeMillis();
+//		boolean doubleTapped = justTapedTime - lastTapTime < 300;
+		for (int i = 0; i < 13; i++) {
+			if (allPiles[i].includes(x, y)) {
+				System.out.println("Incuded " + allPiles[i].firstCard);
+				System.out.println("CardNumber: " + allPiles[i].cardNumber);
+				allPiles[i].tapped(x, y);
 
-			return true;
+				repaint();
+				return true;
+
+			}
 		}
-		lastTapTime = System.currentTimeMillis();
-		return false;
+			deselect();
+			lastTapTime = System.currentTimeMillis();
+			repaint();
+			return true;
+
+	}
+
+	static void deselect(){
+		for(CardPile pile : allPiles){
+			pile.selected = false;
+		}
+		selected = false;
+		selectedCard = null;
+		selectedPile = null;
 	}
 
 

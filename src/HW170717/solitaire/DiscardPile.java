@@ -16,25 +16,46 @@ class DiscardPile extends CardPile {
 		super.push(aCard);
 	}
 
+//	@Override
+//	public void proceed(int tx, int ty) {
+//		if (empty()) {
+//			return;
+//		}
+//
+//
+//
+//		Card topCard = pop();
+//		for (int i = 0; i < 4; i++) {
+//			if (Solitare.suitPile[i].canTake(topCard)) {
+//				Solitare.suitPile[i].push(topCard);
+//				return;
+//			}
+//		}
+//		for (int i = 0; i < 7; i++) {
+//			if (Solitare.tableau[i].canTake(topCard)) {
+//				Solitare.tableau[i].push(topCard);
+//				return;
+//			}
+//		}
+//		// nobody can useWithTimeMeasure it, put it back on our list
+//		push(topCard);
+//	}
+
+
 	@Override
-	public void proceed(int tx, int ty) {
-		if (empty()) {
-			return;
+	public void tapped(int x, int y) {
+		if(empty()) return;
+		if(Solitare.selectedCard != null) {
+			deselect();
 		}
-		Card topCard = pop();
-		for (int i = 0; i < 4; i++) {
-			if (Solitare.suitPile[i].canTake(topCard)) {
-				Solitare.suitPile[i].push(topCard);
-				return;
-			}
-		}
-		for (int i = 0; i < 7; i++) {
-			if (Solitare.tableau[i].canTake(topCard)) {
-				Solitare.tableau[i].push(topCard);
-				return;
-			}
-		}
-		// nobody can use it, put it back on our list
-		push(topCard);
+
+		else select(x,y);
+	}
+
+	@Override
+	protected void select(int x, int y) {
+		super.select(x, y);
+		Solitare.selectedCard = this.top();
+		System.out.println(Solitare.selectedCard);
 	}
 }

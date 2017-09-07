@@ -23,7 +23,7 @@ class DeckPile extends CardPile {
 			for (int i = 0; i < limit; i++) {
 				pileTwo.push(pileOne.pop());
 			}
-			// then add the card found there
+			// then push the card found there
 			push(pileOne.pop());
 			// then put the decks back together
 			while (!pileTwo.empty()) {
@@ -42,5 +42,15 @@ class DeckPile extends CardPile {
 			return;
 		}
 		Solitare.discardPile.push(this.pop());
+	}
+
+	@Override
+	public void tapped(int x, int y) {
+		if(Solitare.selectedCard != null){
+			Solitare.deselect();
+		}
+		else{
+			proceed(x,y);
+		}
 	}
 }

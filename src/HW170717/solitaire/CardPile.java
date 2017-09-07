@@ -8,12 +8,17 @@ class CardPile {
 	// coordinates of the card pile
 	protected int x;
 	protected int y;
-	private Card firstCard;
+	protected Card firstCard;
+	boolean selected = false;
+
+	int cardNumber;
+
 
 	CardPile(final int xCoord, final int yCoord) {
 		x = xCoord;
 		y = yCoord;
 		firstCard = null;
+		cardNumber = 0;
 	}
 
 	// access to cards are not overridden
@@ -29,6 +34,15 @@ class CardPile {
 	public void push(final Card aCard) {
 		aCard.link = firstCard;
 		firstCard = aCard;
+		cardNumber++;
+	}
+	void transfer(Card card){
+		if(Solitare.selectedCard == null) return;
+		Solitare.selectedPile.pop();
+		Solitare.selectedCard.link = firstCard;
+		firstCard = Solitare.selectedCard;
+		Solitare.selectedPile.cardNumber--;
+		Solitare.deselect();
 	}
 
 	public Card pop() {
@@ -37,7 +51,11 @@ class CardPile {
 			result = firstCard;
 			firstCard = firstCard.link;
 		}
+		cardNumber--;
 		return result;
+	}
+	public void remove(){
+		firstCard = firstCard.link;
 	}
 
 	// the following are sometimes overridden
@@ -48,7 +66,7 @@ class CardPile {
 	}
 
 	public void proceed(final int tx, final int ty) {
-		// do nothing
+		// for extention
 	}
 
 
@@ -56,9 +74,18 @@ class CardPile {
 		g.setColor(Color.black);
 		if (firstCard == null) {
 			g.drawRect(x, y, Card.width, Card.height);
-		} else {
-			firstCard.draw(g, x, y);
 		}
+		else {
+			firstCard.draw(g, x, y, selected);
+		}
+//		if(selected) {
+//			g.setColor(Color.red);
+//			g.drawLine(x, y, x +Card.width, y);
+//			g.drawLine(x +Card.width, y, x +Card.width, y + Card.height);
+//			g.drawLine(x +Card.width, y + Card.height, x,y + Card.height);
+//			g.drawLine(x,y + Card.height, x, y);
+//		}
+
 	}
 
 	public boolean canTake(final Card aCard) {
@@ -74,7 +101,41 @@ class CardPile {
 		return firstCard;
 	}
 
-	public void select(int x, int y) {
 
+	public void tapped(int x, int y) {
+
+		if(Solitare.selectedCard != null && this.contains(Solitare.selectedCard)) {
+			deselect();
+		}
+		else if(Solitare.selectedCard != null){
+				proceed(x, y);
+
+		}
+
+		else select(x,y);
+	}
+
+	protected void select(int x, int y) {
+		Solitare.deselect();
+		Solitare.selected = selected = true;
+		Solitare.selectedPile = this;
+
+
+	}
+
+	protected void deselect() {
+		Solitare.selected = selected = false;
+		Solitare.selectedPile = null;
+		Solitare.selectedCard = null;
+	}
+	boolean contains(Card card){
+		if(empty()) return false;
+		Card currentCard = firstCard;
+		while(currentCard != null){
+			if(firstCard.equals(card)){
+				return true;
+			}
+		}
+		return false;
 	}
 }
