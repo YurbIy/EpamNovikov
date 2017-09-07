@@ -49,8 +49,6 @@ class DeckPile extends CardPile {
 		if(Solitare.selectedCard != null){
 			Solitare.deselect();
 		}
-		else{
-			proceed(x,y);
-		}
+		proceed(x,y);
 	}
 }

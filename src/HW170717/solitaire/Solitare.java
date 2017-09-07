@@ -14,6 +14,8 @@ public class Solitare extends Applet {
 	static boolean selected;
 	static Card selectedCard;
 	static CardPile selectedPile;
+	static boolean won = false;
+	char[] finalScreen = {'Y', 'o', 'u', ' ', 'w', 'i', 'n'};
 
 
 
@@ -40,8 +42,15 @@ public class Solitare extends Applet {
 
 	@Override
 	public void paint(Graphics g) {
-		for (int i = 0; i < 13; i++) {
-			allPiles[i].display(g);
+		if(!won) {
+			for (int i = 0; i < 13; i++) {
+				allPiles[i].display(g);
+			}
+		}
+		else{
+			g.setColor(Color.black);
+			g.drawRect(80, 80 ,300, 300);
+			g.drawChars(finalScreen,0,finalScreen.length,140,100);
 		}
 	}
 

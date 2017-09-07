@@ -27,9 +27,20 @@ class SuitPile extends CardPile {
 	public void proceed(int x, int y) {
 		if(canTake(Solitare.selectedCard) /*&& (Solitare.selectedCard.link == null)*/){
 			this.transfer(Solitare.selectedCard);
+			ifWon();
 			System.out.println(Solitare.selectedCard); // FIXME technical message
 			Solitare.deselect();
 
 		}
+	}
+
+	private void ifWon() {
+		for (SuitPile pile: Solitare.suitPile) {
+			if(pile.top() != null && pile.top().getRank() != 12){
+				return;
+			}
+
+		}
+		Solitare.won = true;
 	}
 }

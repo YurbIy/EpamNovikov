@@ -36,13 +36,31 @@ class CardPile {
 		firstCard = aCard;
 		cardNumber++;
 	}
-	void transfer(Card card){
+	void transfer(Card selectedCard) {
+		System.out.println("Transfer started");
 		if(Solitare.selectedCard == null) return;
-		Solitare.selectedPile.pop();
-		Solitare.selectedCard.link = firstCard;
-		firstCard = Solitare.selectedCard;
-		Solitare.selectedPile.cardNumber--;
+		Card exFirstCard = firstCard;
+		int count = count(selectedCard, Solitare.selectedPile.firstCard);
+		firstCard = Solitare.selectedPile.firstCard;
+
+		Solitare.selectedPile.firstCard = selectedCard.link;
+		Solitare.selectedPile.cardNumber -= count;
+
+		selectedCard.link = exFirstCard;
+		cardNumber += count;
+		if(Solitare.selectedPile.firstCard != null && !Solitare.selectedPile.firstCard.isFaceUp()) Solitare.selectedPile.flipFirst();
 		Solitare.deselect();
+
+	}
+	private static int count(Card selectedCard, Card firstCardOfSelectedPile) {
+		int count = 1;
+		Card cursor = firstCardOfSelectedPile;
+		while(!selectedCard.equals(cursor)){
+			count++;
+			cursor = cursor.link;
+		}
+		System.out.println("Count = "  + count);
+		return count;
 	}
 
 	public Card pop() {

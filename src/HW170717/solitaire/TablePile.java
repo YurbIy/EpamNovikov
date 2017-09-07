@@ -7,8 +7,7 @@ class TablePile extends CardPile {
 
 	private static final int NEXT_CARD_SHIFT = 35;
 
-	private int tappedX;
-	private int tappedY;
+	boolean drawRed = false;
 
 	TablePile(int x, int y, int c) {
 		// initialize the parent class
@@ -37,8 +36,11 @@ class TablePile extends CardPile {
 	public boolean includes(int tx, int ty) {
 		// don't test bottom of card
 		if(empty()) {
-			System.out.println("Empty!");
-			return (x <= tx) && (tx <= x + Card.width) && (y > 80) && (y <= 80 + Card.height);
+//			System.out.println("Empty!");
+//			System.out.println("x: " + ((x <= tx) && (tx <= x + Card.width)));
+//			System.out.println("y: " + "(" + 80 + ";" + (80 + Card.height) + ")" + ((y > 80) && (y <= 80 + Card.height)));
+//			System.out.println("Total: " + ((x <= tx) && (tx <= x + Card.width) && (ty > 80) && (y <= 80 + Card.height)));
+			return (x <= tx) && (tx <= x + Card.width) && (ty > y) && (ty <= y + Card.height);
 		}
 
 		return (tx >= x) && (tx <= x + Card.width) && (ty >= y) && (ty <= y + Card.height + (cardNumber - 1) * NEXT_CARD_SHIFT);
@@ -53,17 +55,24 @@ class TablePile extends CardPile {
 	}
 
 	private int stackDisplay(Graphics g, Card aCard) {
-		int localy;
 		if (aCard == null) {
 			return y;
 		}
+
+
+		int localy;
 		localy = stackDisplay(g, aCard.link);
-		aCard.draw(g, x, localy, selected);
+		if(aCard.equals(Solitare.selectedCard)){
+			drawRed = true;
+		}
+
+		aCard.draw(g, x, localy, drawRed);
 		return localy + NEXT_CARD_SHIFT;
 	}
 
 	@Override
 	public void display(Graphics g) {
+		drawRed = false;
 		stackDisplay(g, top());
 	}
 
@@ -81,35 +90,6 @@ class TablePile extends CardPile {
 	}
 
 	@Override
-	void transfer(Card selectedCard) {
-		System.out.println("Transfer started");
-		if(Solitare.selectedCard == null) return;
-		Card exFirstCard = firstCard;
-		int count = count(selectedCard, Solitare.selectedPile.firstCard);
-		firstCard = Solitare.selectedPile.firstCard;
-
-		Solitare.selectedPile.firstCard = selectedCard.link;
-		Solitare.selectedPile.cardNumber -= count;
-
-		selectedCard.link = exFirstCard;
-		cardNumber += count;
-		if(Solitare.selectedPile.firstCard != null && !Solitare.selectedPile.firstCard.isFaceUp()) Solitare.selectedPile.flipFirst();
-		Solitare.deselect();
-
-	}
-
-	private int count(Card selectedCard, Card firstCardOfSelectedPile) {
-		int count = 1;
-		Card cursor = firstCardOfSelectedPile;
-		while(!selectedCard.equals(cursor)){
-			count++;
-			cursor = cursor.link;
-		}
-		System.out.println("Count = "  + count);
-		return count;
-	}
-
-	@Override
 	public void tapped(int x, int y) {
 		System.out.println("tapped");
 		if(Solitare.selectedCard != null && Solitare.selectedPile == this/*this.contains(Solitare.selectedCard)*/) {
@@ -124,24 +104,21 @@ class TablePile extends CardPile {
 	}
 
 	@Override
-	protected void select(int x, int y) {
-		// if face down, then flip
-//			Card topCard = top();
-//			if (!topCard.isFaceUp()) {
-//				topCard.flip();
-//				return;
-//			}
+	protected void select(int tx, int ty) {
+
 		System.out.println("Selection started");
 		Card currentCard = null;
-		if ((y <= this.y + cardNumber * NEXT_CARD_SHIFT + 35 && y > this.y + cardNumber * NEXT_CARD_SHIFT - 35) || firstCard.link == null) {
+		if ((ty <= y + cardNumber * NEXT_CARD_SHIFT + 35 && ty > y + cardNumber * NEXT_CARD_SHIFT - 35) || firstCard.link == null) {
+			System.out.println("first card selected");
 			currentCard = firstCard;
 		}
 		else {
-			for (int i = this.y + (cardNumber - 1) * 35; i > this.y + 30; i = i - 35) {
-				currentCard = firstCard.link;
+			currentCard = firstCard;
+			for (int i = y + (cardNumber - 1) * 35; i > y + 30; i = i - 35) {
+				currentCard = currentCard.link;
 				System.out.println("Inside cycle");
-				if (y <= i && y > i - 35) {
-					System.out.println("Inside if");
+				if (ty <= i && ty > i - 35) {
+					System.out.println(currentCard + " selected");
 					break;
 				}
 			}
