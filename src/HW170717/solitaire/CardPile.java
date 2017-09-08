@@ -96,13 +96,7 @@ class CardPile {
 		else {
 			firstCard.draw(g, x, y, selected);
 		}
-//		if(selected) {
-//			g.setColor(Color.red);
-//			g.drawLine(x, y, x +Card.width, y);
-//			g.drawLine(x +Card.width, y, x +Card.width, y + Card.height);
-//			g.drawLine(x +Card.width, y + Card.height, x,y + Card.height);
-//			g.drawLine(x,y + Card.height, x, y);
-//		}
+
 
 	}
 
